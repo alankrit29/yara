@@ -11,7 +11,7 @@ from email.MIMEText import MIMEText
 msg = MIMEMultipart()
 
 msg['Subject'] = sys.argv[1] + '\t' + 'Audit Report'
-msg['To'] = ','.join(sys.argv[3])
+msg['To'] = ','.join([sys.argv[3]])
 msg['From'] = sys.argv[2]
 part = MIMEText('text', "plain")
 part.set_payload('Please check the attached reports')
