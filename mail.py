@@ -16,7 +16,7 @@ msg['From'] = sys.argv[2]
 part = MIMEText('text', "plain")
 part.set_payload('Please check the attached reports')
 msg.attach(part)
-session = smtplib.SMTP('sys.argv[5]', 587)
+session = smtplib.SMTP(sys.argv[5], 587)
 session.ehlo()
 session.starttls()
 session.ehlo  
