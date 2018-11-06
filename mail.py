@@ -22,26 +22,6 @@ session.starttls()
 session.ehlo  
 session.login(sys.argv[2], sys.argv[4])
 
-fp = open('/var/log/lynis.log', 'rb')
-msgq = MIMEBase('text', 'text')
-msgq.set_payload(fp.read())
-fp.close()
-encoders.encode_base64(msgq)
-filename='lynis.log'
-msgq.add_header('Content-Disposition', 'attachment', filename=filename)
-msg.attach(msgq)
-qwertyuiop = msg.as_string()
-
-fp = open('/var/log/lynis-suggestions.log', 'rb')
-msgq = MIMEBase('text', 'text')
-msgq.set_payload(fp.read())
-fp.close()
-encoders.encode_base64(msgq)
-filename='lynis-suggestions.log'
-msgq.add_header('Content-Disposition', 'attachment', filename=filename)
-msg.attach(msgq)
-qwertyuiop = msg.as_string()
-
 fp = open('/var/log/yara_malicious_files.log', 'rb')
 msgq = MIMEBase('text', 'text')
 msgq.set_payload(fp.read())
@@ -58,6 +38,26 @@ msgq.set_payload(fp.read())
 fp.close()
 encoders.encode_base64(msgq)
 filename='snyk_docker.log'
+msgq.add_header('Content-Disposition', 'attachment', filename=filename)
+msg.attach(msgq)
+qwertyuiop = msg.as_string()
+
+fp = open('/var/log/lynis.log', 'rb')
+msgq = MIMEBase('text', 'text')
+msgq.set_payload(fp.read())
+fp.close()
+encoders.encode_base64(msgq)
+filename='lynis.log'
+msgq.add_header('Content-Disposition', 'attachment', filename=filename)
+msg.attach(msgq)
+qwertyuiop = msg.as_string()
+
+fp = open('/var/log/lynis-suggestions.log', 'rb')
+msgq = MIMEBase('text', 'text')
+msgq.set_payload(fp.read())
+fp.close()
+encoders.encode_base64(msgq)
+filename='lynis-suggestions.log'
 msgq.add_header('Content-Disposition', 'attachment', filename=filename)
 msg.attach(msgq)
 qwertyuiop = msg.as_string()
