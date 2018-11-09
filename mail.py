@@ -42,12 +42,12 @@ msgq.add_header('Content-Disposition', 'attachment', filename=filename)
 msg.attach(msgq)
 qwertyuiop = msg.as_string()
 
-fp = open('/var/log/lynis.log', 'rb')
+fp = open('/var/log/lynis-vulnerable-packages.log', 'rb')
 msgq = MIMEBase('text', 'text')
 msgq.set_payload(fp.read())
 fp.close()
 encoders.encode_base64(msgq)
-filename='lynis.log'
+filename='lynis-vulnerable-packages.log'
 msgq.add_header('Content-Disposition', 'attachment', filename=filename)
 msg.attach(msgq)
 qwertyuiop = msg.as_string()
