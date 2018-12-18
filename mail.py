@@ -32,36 +32,5 @@ msgq.add_header('Content-Disposition', 'attachment', filename=filename)
 msg.attach(msgq)
 qwertyuiop = msg.as_string()
 
-fp = open('/var/log/snyk_docker.log', 'rb')
-msgq = MIMEBase('text', 'text')
-msgq.set_payload(fp.read())
-fp.close()
-encoders.encode_base64(msgq)
-filename='snyk_docker.log'
-msgq.add_header('Content-Disposition', 'attachment', filename=filename)
-msg.attach(msgq)
-qwertyuiop = msg.as_string()
-
-fp = open('/var/log/lynis-vulnerable-packages.log', 'rb')
-msgq = MIMEBase('text', 'text')
-msgq.set_payload(fp.read())
-fp.close()
-encoders.encode_base64(msgq)
-filename='lynis-vulnerable-packages.log'
-msgq.add_header('Content-Disposition', 'attachment', filename=filename)
-msg.attach(msgq)
-qwertyuiop = msg.as_string()
-
-fp = open('/var/log/lynis-suggestions.log', 'rb')
-msgq = MIMEBase('text', 'text')
-msgq.set_payload(fp.read())
-fp.close()
-encoders.encode_base64(msgq)
-filename='lynis-suggestions.log'
-msgq.add_header('Content-Disposition', 'attachment', filename=filename)
-msg.attach(msgq)
-qwertyuiop = msg.as_string()
-
-
 session.sendmail(sys.argv[2], sys.argv[3], qwertyuiop)
 session.quit()
