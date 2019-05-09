@@ -21,7 +21,7 @@ session.ehlo()
 session.starttls()
 session.ehlo  
 session.login(sys.argv[2], sys.argv[4])
-
+###
 fp = open('/var/log/yara_malicious_files.log', 'rb')
 msgq = MIMEBase('text', 'text')
 msgq.set_payload(fp.read())
